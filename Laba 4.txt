@@ -1,0 +1,305 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+class appliances {
+protected:
+	int serial_number;
+	string type;
+	int weight; //вес
+	int power;
+public:
+	appliances() {
+
+	}
+	void set_serial_number(int serial_number) {
+		this->serial_number = serial_number;
+	}
+	void set_weight(int weight) {
+		this->weight = weight;
+	}
+	void set_power(int power) {
+		this->power = power;
+	}
+	void set_type(string type) {
+		this->type = type;
+	}
+	string get_type() {
+		return type;
+	}
+	int get_serial_number() {
+		return serial_number;
+	}
+	int get_weight() {
+		return weight;
+	}
+	int get_power() {
+		return power;
+	}
+	appliances(int serial_number, string type, int weight, int power) {
+		this->set_serial_number(serial_number);
+		this->set_type(type);
+		this->set_weight(weight);
+		this->set_power(power);
+	}
+	void view_h() {
+		cout << "Объект создан!" << endl;
+		cout << "Серийный номер: " << get_serial_number() << endl;
+		cout << "Тип техники: " << get_type() << endl;
+		cout << "Вес: " << get_weight() << endl;
+		cout << "Мощность: " << get_power() << endl;
+	}
+};
+
+class technik : public appliances {
+protected:
+	int voltage;
+	string color;
+public:
+	void set_voltage(int voltage) {
+		this->voltage = voltage;
+	}
+	void set_color(string color) {
+		this->color = color;
+	}
+	int get_voltage() {
+		return voltage;
+	}
+	string get_color() {
+		return color;
+	}
+	technik();
+	technik(int serial_number, string type, int weight, int power, int voltage, string color) {
+		this->set_serial_number(serial_number);
+		this->set_type(type);
+		this->set_weight(weight);
+		this->set_power(power);
+		this->set_voltage(voltage);
+		this->set_color(color);
+	}
+	technik(int serial_number) {
+		this->serial_number;
+	}
+	void view_p() {
+		cout << "Объект создан!" << endl;
+		cout << "Серийный номер: " << get_serial_number() << endl;
+		cout << "Тип техники: " << get_type() << endl;
+		cout << "Вес: " << get_weight() << endl;
+		cout << "Мощность: " << get_power() << endl;
+		cout << "Напряжение техники: " << get_voltage() << endl;
+		cout << "Цвет техники: " << get_color() << endl;
+	}
+};
+
+class technik_info : public appliances {
+protected:
+	int width; //ширина
+	int height;//высота
+public:
+	void set_width(int width) {
+		this->width = width;
+	}
+	void set_height(int height) {
+		this->height = height;
+	}
+	int get_width() {
+		return width;
+	}
+	int get_height() {
+		return height;
+	}
+	technik_info();
+	technik_info(int serial_number, string type, int weight, int power, int width, int height) {
+		this->set_serial_number(serial_number);
+		this->set_type(type);
+		this->set_weight(weight);
+		this->set_power(power);
+		this->set_width(width);
+		this->set_height(height);
+	}
+	void view_pi() {
+		cout << "Объект создан!" << endl;
+		cout << "Серийный номер: " << get_serial_number() << endl;
+		cout << "Тип техники: " << get_type() << endl;
+		cout << "Вес: " << get_weight() << endl;
+		cout << "Мощность техники: " << get_power() << endl;
+		cout << "Высота: " << get_height() << endl;
+		cout << "Ширина: " << get_width() << endl;
+	}
+};
+
+class technik_dopinfo : public appliances {
+protected:
+	string brand;
+	int price;
+public:
+	string get_brand() {
+		return brand;
+	}
+	int get_price() {
+		return price;
+	}
+	void set_price(int price) {
+		this->price = price;
+	}
+	void set_brand(string brand) {
+		this->brand = brand;
+	}
+	technik_dopinfo();
+	technik_dopinfo(int serial_number, string type, int weight, int power, string brand, int price) {
+		this->set_serial_number(serial_number);
+		this->set_type(type);
+		this->set_weight(weight);
+		this->set_power(power);
+		this->set_brand(brand);
+		this->set_price(price);
+	}
+	void view_t() {
+		cout << "Объект создан!" << endl;
+		cout << "Серийный номер: " << get_serial_number() << endl;
+		cout << "Тип техники: " << get_type() << endl;
+		cout << "Вес: " << get_weight() << endl;
+		cout << "Мощность : " << get_power() << endl;
+		cout << "Цена: " << get_price() << endl;
+		cout << "Бренд: " << get_brand() << endl;
+	}
+};
+
+void menu_choise() {
+	cout << "Выберите, с чем вы хотите работать: " << endl;
+	cout << "1 - Информация о технике " << endl;
+	cout << "2 - Параметры техники с основной информацией " << endl;
+	cout << "3 - Информация техники с основной информацией" << endl;
+	cout << "4 - Дополнительная информация о технике " << endl;
+	cout << "0 - Выход" << endl;
+}
+int main() {
+	bool flag = true;
+	int choise = 0;
+
+	setlocale(0, " ");
+
+	while (flag == true) {
+		menu_choise();
+		cin >> choise;
+		switch (choise)
+		{
+		case 1: {
+			int serial_number = 0, power = 0, weight = 0;
+			string type;
+			system("cls");
+			cout << "Ввод информации: " << endl;
+			cout << "Серийный номер: ";
+			cin >> serial_number;
+			system("cls");
+			cout << " Тип техники: ";
+			cin >> type;
+			system("cls");
+			cout << "Вес : ";
+			cin >> weight;
+			system("cls");
+			cout << "Мощность: ";
+			cin >> power;
+			system("cls");
+			appliances obj(serial_number, type, weight, power);
+			obj.view_h();
+			break;
+		}
+		case 2: {
+			int serial_number = 0, power = 0, weight = 0, voltage = 0;
+			string type, color;
+
+			system("cls");
+			cout << "Ввод информации: " << endl;
+			cout << "Серийный номер : ";
+			cin >> serial_number;
+			system("cls");
+			cout << "Тип техникии: ";
+			cin >> type;
+			system("cls");
+			cout << "Вес: ";
+			cin >> weight;
+			system("cls");
+			cout << "Мощность: ";
+			cin >> power;
+			system("cls");
+			cout << "Напряжение: ";
+			cin >> voltage;
+			system("cls");
+			cout << "Цвет: ";
+			cin >> color;
+			system("cls");
+			technik obj(serial_number, type, weight, power, voltage, color);
+			obj.view_p();
+			break;
+		}
+		case 3: {
+			int serial_number = 0, power = 0, weight = 0, height = 0, width = 0;
+			string type;
+
+			system("cls");
+			cout << "Ввод информации: " << endl;
+			cout << "Серийный номер: ";
+			cin >> serial_number;
+			system("cls");
+			cout << "Тип : ";
+			cin >> type;
+			system("cls");
+			cout << "Вес : ";
+			cin >> weight;
+			system("cls");
+			cout << "Мощность: ";
+			cin >> power;
+			system("cls");
+			cout << "Ширина: ";
+			cin >> width;
+			system("cls");
+			cout << "Высота: ";
+			cin >> height;
+			system("cls");
+			technik_info obj3(serial_number, type, weight, power, width, height);
+			cout << "Ошибка!" << endl;
+			obj3.view_pi();
+			break;
+		}
+		case 4: {
+			int serial_number = 0, power = 0, weight = 0, price = 0;
+			string type, brand;
+
+			system("cls");
+			cout << "Ввод информации: " << endl;
+			cout << "Серийный номер: ";
+			cin >> serial_number;
+			system("cls");
+			cout << "Тип: ";
+			cin >> type;
+			system("cls");
+			cout << "Вес: ";
+			cin >> weight;
+			system("cls");
+			cout << "Мощность: ";
+			cin >> power;
+			system("cls");
+			cout << "Цена: ";
+			cin >> price;
+			system("cls");
+			cout << "Бренд : ";
+			cin >> brand;
+			system("cls");
+			technik_dopinfo obj2(serial_number, type, weight, power, brand, price);
+			cout << "Ошибка!" << endl;
+			obj2.view_t();
+			break;
+		}
+		case 0: {
+			flag = false; break;
+		}
+		default: {
+			system("cls"); cout << "Ничего не найдено!" << endl; break;
+		}
+		}
+	}
+	system("pause");
+	return 0;
+}
